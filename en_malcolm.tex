@@ -1,0 +1,185 @@
+\documentclass{article}
+\usepackage[cm]{fullpage}
+\usepackage{color}
+\usepackage{hyperref}
+
+\hypersetup{breaklinks=true,%
+pagecolor=white,%
+colorlinks=true,%
+linkcolor=cyan,%
+urlcolor=MyDarkBlue}
+
+\definecolor{MyDarkBlue}{rgb}{0,0.0,0.45}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting parameters  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newlength{\tabin}
+\setlength{\tabin}{1em}
+\newlength{\secsep}
+\setlength{\secsep}{0.1cm}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0in}
+\setlength{\itemsep}{0in}
+\setlength{\topsep}{0in}
+\setlength{\tabcolsep}{0in}
+
+\definecolor{contactgray}{gray}{0.3}
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Template Definitions  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\lineunder}{\vspace*{-8pt} \\ \hspace*{-6pt} \hrulefill \\ \vspace*{-15pt}}
+\newcommand{\name}[1]{\begin{center}\textsc{\Huge#1}\\\end{center}}
+\newcommand{\program}[1]{\begin{center}\textsc{#1}\end{center}}
+\newcommand{\contact}[1]{\begin{center}\color{contactgray}{\small#1}\end{center}}
+
+\newenvironment{tabbedsection}[1]{
+  \begin{list}{}{
+      \setlength{\itemsep}{0pt}
+      \setlength{\labelsep}{0pt}
+      \setlength{\labelwidth}{0pt}
+      \setlength{\leftmargin}{\tabin}
+      \setlength{\rightmargin}{\tabin}
+      \setlength{\listparindent}{0pt}
+      \setlength{\parsep}{0pt}
+      \setlength{\parskip}{0pt}
+      \setlength{\partopsep}{0pt}
+      \setlength{\topsep}{#1}
+    }
+  \item[]
+}{\end{list}}
+
+\newenvironment{nospacetabbing}{
+    \begin{tabbing}
+}{\end{tabbing}\vspace{-1.2em}}
+
+\newenvironment{resume_header}{}{\vspace{0pt}}
+
+
+\newenvironment{resume_section}[1]{
+  \filbreak
+  \vspace{2\secsep}
+  \textsc{\large#1}
+  \lineunder
+  \begin{tabbedsection}{\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{resume_subsection}[2][]{
+  \textbf{#2} \hfill {\footnotesize #1} \hspace{2em}
+  \begin{tabbedsection}{0.5\secsep}
+}{\end{tabbedsection}}
+
+\newenvironment{subitems}{
+  \renewcommand{\labelitemi}{-}
+  \begin{itemize}
+      \setlength{\labelsep}{1em}
+}{\end{itemize}}
+
+\newenvironment{resume_employer}[4]{
+  \vspace{\secsep}
+  \textbf{#1} \\ 
+  \indent {\small #2} \hfill {\footnotesize#3 (#4)}
+  \begin{tabbedsection}{0pt}
+  \begin{subitems}
+}{\end{subitems}\end{tabbedsection}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%     Start Document     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{resume_header}
+\name{Malcolm St. John}
+\program{Computer Engineering}
+\contact{malcolm.st.john@usherbrooke.ca \hspace{2.5cm} 514-668-9136 \hspace{4.5cm}Sherbrooke, Qc}
+\end{resume_header}
+
+\begin{resume_section}{Education}
+  \begin{resume_subsection}[Sherbrooke, QC (2017--Present)]{Université de Sherbrooke}
+    \begin{subitems}
+      \item B. Eng. Computer Engineering
+    \end{subitems}
+  \end{resume_subsection}
+  
+  \begin{resume_subsection}[Montreal, QC (2015--)]{McGill University}
+    \begin{subitems}
+      \item B. Sc. Honours Mathematics (30 credits)
+     \end{subitems}
+  \end{resume_subsection}
+  
+    \begin{resume_subsection}[Sherbrooke, QC (2012-2015)]{Cégep de Sherbrooke}
+    \begin{subitems}
+      \item College diploma in natural sciences and music
+      \item National finalist for the Canadian Music Competition in 2013 and 2015
+      \item Marie-Victorin prize for excellence in mathematics, 2015
+     \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
+
+\begin{resume_section}{Experience}
+  \begin{resume_employer}{Media5 Corporation}{Kernel Developer; C}{Sherbrooke, QC}{Winter 2020}
+    \item Development of their custom kernel.
+  \end{resume_employer}
+  \begin{resume_employer}{CGI Inc.}{Full stack developer; Java (Spring), Typescript (Angular), Microsoft SQL Server}{Sherbrooke, QC}{Summer 2019}
+    \item Conception and implementation of API endpoints based on client specifications.
+  \end{resume_employer}
+  
+    \begin{resume_employer}{Ubisoft Montreal}{Tools developer; C++}{Montreal, QC}{Fall 2018} 
+    \item Generation of 3D navigation data for all the Ubisoft AAA games which use dynamic environments.
+    \item Designed and implemented a new data management model for storing environment data of game instances in the cloud.
+  \end{resume_employer}
+  
+  \begin{resume_employer}{École de musique Pianissimo}{Piano and violin professor}{Sherbrooke, QC}{2014-2018}
+  \end{resume_employer}
+\end{resume_section}
+
+\begin{resume_section}{Projects}
+  \begin{resume_subsection}[Fall 2019-]{Contributor to the Linux Kernel}
+  \begin{subitems}
+    \item Driver development and code maintenance (C).
+    \end{subitems}
+  \end{resume_subsection}
+  
+  \begin{resume_subsection}[Fall 2019]{Robotics and simulations project}
+  \begin{subitems}
+    \item Program a robot to complete a sequence of tasks that were previously analyzed in a simulation (Python).
+    \end{subitems}
+  \end{resume_subsection}
+  
+  \begin{resume_subsection}[Winter 2019]{Biometrics analyser for stationary bike}
+  \begin{subitems}
+    \item Helped develop a platform that receives and analyzes biometric data before sending it for display on a user interface (VHDL, Xilinx, C, MIPS architecture, Angular).
+    \end{subitems}
+  \end{resume_subsection}
+  
+  \begin{resume_subsection}[Winter 2018]{Voice controlled Tetris}
+    \begin{subitems}
+        \item Implemented the game's logic (C++).
+    \end{subitems}
+  \end{resume_subsection}
+  
+  \begin{resume_subsection}[Fall 2017]{Introductory robotics project}
+    \begin{subitems}
+    \item Implementation of our robot's navigation (C, C++).
+    \end{subitems}
+  \end{resume_subsection}
+\end{resume_section}
+
+\begin{resume_section}{Technology summary and other information}
+  \begin{nospacetabbing}
+
+  \textbf{Technical Proficiency in : }  \= C, C++, Python, Java, SQL, Git, VHDL, Linux, MIPS assembly,  \LaTeX\\*
+  \textbf{Languages : } \> English and French\\*
+  \textbf{Interests : } \> Mathematics, Cooking, Card games, Reading\\*
+  \end{nospacetabbing}
+\end{resume_section}
+
+\end{document}
+\textbf{}
